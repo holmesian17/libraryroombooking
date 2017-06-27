@@ -5,10 +5,10 @@ def ask():
   while True:   
     print('When is the booking date? (mm/dd/yyyy)')
     date = input()
-    sheet.cell(row=rownum, column=3).value = date
+    sheet.cell(row=rownum, column=2).value = date
     print('What time is the booking? (24hrs - 4 digits)')
     later_time = input()
-    sheet.cell(row=rownum, column=4).value = later_time
+    sheet.cell(row=rownum, column=3).value = later_time
     print('What is the borrower barcode?')
     barcode = input()
     print(barcode)
@@ -22,7 +22,7 @@ def ask():
         sheet.cell(row=rownum, column=1).value = barcode
         print('How many people will be using the room?') #TODO: if persons < 2, may not book???
         persons = input()
-        sheet.cell(row=rownum, column=5).value = persons
+        sheet.cell(row=rownum, column=4).value = persons
         equip_initials()
         wb.save('Library Room Booking.xlsx')
         sys.exit("Done")
@@ -39,7 +39,7 @@ def equip_initials():
     if noteQuestion.startswith('y'):
       print('Enter your note:')
       note = input()
-      sheet.cell(row=rownum, column=6).value = note
+      sheet.cell(row=rownum, column=5).value = note
       print("Enter the staff member's initials")
       initials = input()
       initials = initials.lower()
@@ -47,7 +47,7 @@ def equip_initials():
     else:
       sheet.cell(row=rownum, column=6).value= 'N/A'  
       print("Enter the staff member's initials")
-      initials = input()
+      initials = input()  
       initials = initials.lower()
       sheet.cell(row=rownum, column=7).value = initials
   elif equip_need.startswith('y'):
@@ -60,7 +60,7 @@ def equip_initials():
     if noteQuestion.startswith('y'):
       print('Enter your note:')
       note = input()
-      sheet.cell(row=rownum, column=6).value = note
+      sheet.cell(row=rownum, column=5).value = note
       print("Enter the staff member's initials")
       initials = input()
       initials = initials.lower()
@@ -68,7 +68,7 @@ def equip_initials():
       while True:
         break
     else:
-      sheet.cell(row=rownum, column=6).value = 'N/A'
+      sheet.cell(row=rownum, column=5).value = 'N/A'
       print("Enter the staff member's initials")
       initials = input()
       initials = initials.lower()
@@ -87,7 +87,7 @@ while True:
     sheet = wb.get_sheet_by_name('Scriver')
     sheet['B2'] = 'Scriver'
   else:
-    continue 
+    continue
   rownum = sheet.max_row + 1
   ask()
 
